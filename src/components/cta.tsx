@@ -7,8 +7,8 @@ export default function Cta() {
         Build faster websites.
       </h2>
       <p className="text-slate-500 mt-4 text-lg md:text-xl">
-        Pull content from anywhere and serve it fast with Astro's next-gen
-        island architecture.
+        Pull content from anywhere and serve it fast with next-gen island
+        architecture.
       </p>
       <div className="flex mt-5">
         <Button>Get Started</Button>

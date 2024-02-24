@@ -1,3 +1,5 @@
+import { getPostMetadata } from "@/lib/notion";
+
 export default function BlogLayout({
   params,
   children,
@@ -5,6 +7,7 @@ export default function BlogLayout({
   params: any;
   children: React.ReactNode;
 }>) {
+  const { title, tags, createdTime } = getPostMetadata(params.slug);
   return (
     <section>
       <div className="mx-auto max-w-[735px] mt-14">
@@ -12,15 +15,12 @@ export default function BlogLayout({
           {params.category}
         </span>
         <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
-          {params.title}
+          {title}
         </h1>
-        <div className="flex gap-2 mt-3 items-center">
-          <span className="text-gray-400">{params.author}</span>
-          <span className="text-gray-400">•</span>
-          <time className="text-gray-400">{params.publishDate}</time>
-          <span className="text-gray-400">•</span>
+        <div className="flex gap-2 mt-3 items-center divide-x divide-solid">
+          <time className="text-gray-400">{createdTime}</time>
           <div className="flex gap-3">
-            {params.tags.map((tag: string) => (
+            {tags?.map((tag: string) => (
               <span key={tag} className="text-sm text-gray-500">
                 #{tag}
               </span>
